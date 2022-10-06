@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+.leaflet-default-icon-path {
+    background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
+}
+body {
+    font-family: sans-serif;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+.leaflet-popup-content h3 {
+    margin-bottom: 8px;
+}

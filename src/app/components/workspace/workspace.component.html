@@ -1,0 +1,42 @@
+<ng-container *ngIf="items$  | async as items">
+    <div class="markers">
+        <h2>Markers</h2>
+        <div *ngFor="let item of items">
+            <h3 class="decorator">{{item.title}}</h3>
+            <div>
+                <ng-container *ngFor="let coord of item.latLngArr;">
+                    {{coord}}
+                </ng-container>
+            </div>
+        </div>
+        <div>
+            <form class="form" [formGroup]="markerFormGroup" #addMarkerForm="ngForm" (ngSubmit)="createMarker()">
+                <h3>Add new marker</h3>
+
+                <ng-container *ngFor="let control of markerFormGroup.controls | keyvalue: keepOrder;first as isFirst">
+                    <div class="form__field" [ngClass]="{ 'form__field--full' : isFirst }">
+                        <input class="form-control" [placeholder]="getPlaceholder(control.key)"
+                            [formControlName]="control.key" [ngClass]="{'form-control--error': (control.value?.dirty || control.value?.touched) && control.value.errors }">
+
+                        <div class="form__field--error"
+                            *ngIf="(control.value?.dirty || control.value?.touched) && control.value.errors">
+                            {{ errorMessage(control.value, getPlaceholder(control.key) | lowercase) }}
+                        </div>
+                    </div>
+                </ng-container>
+
+                <button class="btn" #submit type="submit">Create marker</button>
+            </form>
+            <ul>
+                <li *ngFor="let marker of testMarkers | async">
+                    <button class="btn" type="button" (click)="fillTheForm(marker)">Fill the form with
+                        {{marker?.title}}</button>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="map">
+        <app-map [items]="items"></app-map>
+    </div>
+</ng-container>

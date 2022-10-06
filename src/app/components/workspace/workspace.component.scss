@@ -1,0 +1,89 @@
+:host {
+    display: flex;
+    min-height: 100vh;
+}
+
+.map {
+    flex: 1;
+    position: relative;
+}
+
+.markers {
+    flex-basis: 240px;
+    padding: 0 20px;
+}
+
+.form__field--error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 100%;
+}
+
+.form__field {
+    margin-bottom: 16px;
+    position: relative;
+    flex: 1 0 calc(50% - 6px);
+
+    &--full {
+        flex-basis: 100%;
+    }
+
+    &:nth-child(odd) {
+        margin-right: 6px;
+    }
+
+    .form-control {
+        border: 0;
+        border-bottom: 2px solid lightblue;
+        padding: 6px;
+        width: 100%;
+        box-sizing: border-box;
+        outline: none;
+
+        &::placeholder {
+            color: lightblue;
+        }
+
+        &:focus {
+            border-color: forestgreen;
+        }
+
+        &--error {
+            border-color: red
+        }
+    }
+
+}
+
+form {
+    border: 2px solid forestgreen;
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+
+    h3 {
+        margin-top: 0;
+    }
+}
+
+.btn {
+    background: lightblue;
+    width: 100%;
+    padding: 6px;
+    border-color: lightblue;
+    border-radius: 6px;
+    margin-top: 12px;
+    cursor: pointer;
+
+    &:hover {
+        background: darken(lightblue, 10%);
+    }
+}
+
+.decorator {
+    border-left: 4px solid forestgreen;
+    padding-left: 6px;
+}
